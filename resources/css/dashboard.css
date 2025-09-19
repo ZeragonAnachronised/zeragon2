@@ -1,0 +1,105 @@
+.dashboard {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, sans-serif;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.dashboard-user {
+  margin-bottom: 2rem;
+}
+
+.btn-notifications {
+  padding: 0.5rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: #f3f4f6;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.btn-notifications.has-notifications {
+  border-color: red;
+}
+
+.dashboard-seminars {
+  margin-bottom: 2rem;
+}
+
+.dashboard-seminars ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dashboard-seminars li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-photos {
+  margin-bottom: 2rem;
+}
+
+.dashboard-photos h2 {
+    margin-bottom: 50px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+  margin-left: 200px;
+}
+
+.btn:hover {
+  background: #4338ca;
+}
+
+.btn-logout {
+  padding: 0.5rem 1rem;
+  background: #ef4444;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  background: #dc2626;
+}
+
+.file {
+    position: relative;
+}
+.file input {
+    position: absolute;
+    width: 105px;
+    height: 55px;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+#add-file {
+    position: absolute;
+    background-color: #4338ca;
+    width: 90px;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    pointer-events: none;
+}
