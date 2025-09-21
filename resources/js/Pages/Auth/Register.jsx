@@ -2,8 +2,7 @@ import { useState } from "react"
 import { router, usePage } from "@inertiajs/react"
 import "../../../css/auth.css"
 
-export default function Register() {
-  const { errors } = usePage().props
+export default function Register({err}) {
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -23,15 +22,13 @@ export default function Register() {
   return (
     <div className="auth-container">
       <h1>Регистрация</h1>
+        {err && <p className="error">{err}</p>}
       <form onSubmit={handleSubmit}>
         <input name="name" placeholder="Имя" onChange={handleChange} />
-        {errors.name && <p className="error">{errors.name}</p>}
         
         <input name="email" type="email" placeholder="Email" onChange={handleChange} />
-        {errors.email && <p className="error">{errors.email}</p>}
         
         <input name="password" type="password" placeholder="Пароль" onChange={handleChange} />
-        {errors.password && <p className="error">{errors.password}</p>}
         
         <input name="password_confirmation" type="password" placeholder="Повторите пароль" onChange={handleChange} />
 

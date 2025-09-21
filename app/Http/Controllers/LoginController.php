@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class LoginController extends Controller
 {
@@ -15,9 +16,7 @@ class LoginController extends Controller
         ]);
 
         if (!Auth::attempt($credentials, $request->boolean('remember'))) {
-            return back()->withErrors([
-                'email' => 'Неверный email или пароль.',
-            ]);
+            return inertia('Auth/Login', ['err' => 'Неверные данные для входа']);
         }
 
         $request->session()->regenerate();

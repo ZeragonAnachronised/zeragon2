@@ -27,11 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn() => Inertia::render('Dashboard', [
         'user' => auth()->user(),
         'seminars' => Seminar::get(),
-        'url' => asset('storage/' . Image::first()->path)
+        'url' => Image::pluck('path')->map(fn ($path) => asset('storage/' . $path)),
     ]))->name('dashboard');
 
     Route::post('/seminars/{seminar}/signup', [SeminarController::class, 'signup']);
     Route::post('/photos', [PhotoController::class, 'store']);
 
-    Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
+    Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 });

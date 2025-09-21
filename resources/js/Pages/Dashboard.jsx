@@ -35,6 +35,9 @@ export default function Dashboard({ user, notifications = [], seminars = [], url
 
       <div className="dashboard-seminars">
         <h2>Семинары конференции</h2>
+        {url.map((image, index) => (
+          <img key={index} src={image} />
+        ))}
         {seminars.length === 0 ? (
           <p>Пока нет доступных семинаров.</p>
         ) : (
@@ -42,7 +45,6 @@ export default function Dashboard({ user, notifications = [], seminars = [], url
             {seminars.map((seminar) => (
               <li key={seminar.id}>
                 <span>{seminar.title}</span>
-                <img src={url} alt="" />
                 <button onClick={() => handleSeminarSignup(seminar.id)} className="btn">
                   Записаться
                 </button>
@@ -63,9 +65,8 @@ export default function Dashboard({ user, notifications = [], seminars = [], url
         </form>
       </div>
 
-      <form method="post" action="/logout">
-        <input type="hidden" name="_token" value={document.querySelector('meta[name="csrf-token"]').content} />
-        <button class="btn" type="submit">Выйти</button>
+      <form method="get" action="/logout">
+        <button className="btn" type="submit">Выйти</button>
       </form>
     </div>
   )
