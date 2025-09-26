@@ -41,6 +41,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+  border-top: 1px solid black;
+  padding: 10px;
+}
+
+.dashboard-seminars li p {
+  max-width: 300px;
 }
 
 .dashboard-photos {
@@ -102,4 +108,24 @@
     color: white;
     border-radius: 10px;
     pointer-events: none;
+}
+
+img {
+  max-height: 200px;
+  max-width: 300px;
+}
+
+.imgWindow {
+  padding: 20px;
+  border: 1px solid black;
+  max-width: 500px;
+  display: none;
+}
+.imgWindow.active {
+  display: block;
+}
+.Link {
+  text-decoration: none;
+  background-color: #df7575;
+  padding: 10px;
 }

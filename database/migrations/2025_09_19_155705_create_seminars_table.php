@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('about');
-            $table->dateTime('date');
+            $table->date('date');
             $table->unsignedBigInteger('img_id');
             $table->timestamps();
         });

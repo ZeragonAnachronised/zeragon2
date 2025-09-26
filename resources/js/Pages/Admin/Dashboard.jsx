@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Link, router, usePage } from "@inertiajs/react"
-import "../../css/dashboard.css"
+import "../../../css/dashboard.css"
 
-export default function Dashboard({ user, seminars = [], my = [], url, role }) {
+export default function Dashboard({ user, seminars = [] }) {
   const [file, setFile] = useState(null)
   const { errors } = usePage().props
 
@@ -18,49 +18,27 @@ export default function Dashboard({ user, seminars = [], my = [], url, role }) {
     router.post("/photos", formData)
   }
 
-  const handleSeminarSignup = (seminarId) => {
-    router.post(`/seminars/${seminarId}/signup`)
-  }
-
   return (
     <div className="dashboard">
-      <h1 className="dashboard-title">Личный кабинет</h1>
+      <h1 className="dashboard-title">Админ панель</h1>
       <p className="dashboard-user">Привет, {user.name}!</p>
-      {role == 'admin' ? <Link href='/admin'>Перейти в админ панель</Link> : <></>}
+
       <div className="dashboard-seminars">
-        <h2>Семинары конференции</h2>
-        {url.map((image, index) => (
-          <img key={index} src={image} />
-        ))}
+        <h2>Семинары конференции</h2><br />
+        <Link className="Link" href="/admin/seminar">
+            Создать
+        </Link>
+        <br /><br />
         {seminars.length === 0 ? (
           <p>Пока нет доступных семинаров.</p>
         ) : (
           <ul>
             {seminars.map((seminar) => (
               <li key={seminar.id}>
-                <h2>{seminar.title}</h2>
-                <p>{seminar.about}</p>
-                <h3>{seminar.date}</h3>
-                <button onClick={() => handleSeminarSignup(seminar.id)} className="btn">
-                  Записаться
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <br />
-      <div className="dashboard-seminars">
-        <h2>Записан на</h2>
-        {my.length === 0 ? (
-          <p>Пока не записан никуда</p>
-        ) : (
-          <ul>
-            {my.map((seminar) => (
-              <li key={seminar.id}>
-                <h2>{seminar.title}</h2>
-                <p>{seminar.about}</p>
-                <h3>{seminar.date}</h3>
+                <span>{seminar.title}</span>
+                <Link className="Link" href={"/admin/seminar/" + seminar.id}>
+                    Редактировать
+                </Link>
               </li>
             ))}
           </ul>
